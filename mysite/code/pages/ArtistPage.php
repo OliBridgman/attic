@@ -3,17 +3,20 @@ class ArtistPage extends Page{
 
   private static $db = array(
     'FacebookURL' => 'varchar(255)',
-    'TwitterURL' => 'varchar(255)',
+    'TwitterURL'  => 'varchar(255)',
     'BandcampURL' => 'varchar(255)',
-    'CartelURL' => 'varchar(255)'
+    'CartelURL'   => 'varchar(255)'
   );
 
-  private static $has_one = array();
+  private static $has_one = array(
+    'TopImage'  => 'Image'
+  );
 
   private static $has_many = array();
 
   private static $many_many = array(
-    'Releases' => 'Release'
+    'Releases'  => 'Release',
+    'Media'     => 'MediaPage'
   );
 
   private static $belongs_many_many = array();
@@ -46,7 +49,18 @@ class ArtistPage extends Page{
 
   function getCMSFields(){
     $fields = parent::getCMSFields();
-
+    $fields->addFieldToTab('Root.Main', $topUpload = new UploadField('TopImage', 'Top Image'), 'Content');
+    $topUpload->setAllowedExtensions(array(
+        'jpg',
+        'jpeg',
+        'gif',
+        'png',
+        'pjpeg'
+    ));
+    $fields->addFieldToTab('Root.Main', new TextField('FacebookURL'), 'Content');
+    $fields->addFieldToTab('Root.Main', new TextField('TwitterURL'), 'Content');
+    $fields->addFieldToTab('Root.Main', new TextField('BandcampURL'), 'Content');
+    $fields->addFieldToTab('Root.Main', new TextField('CartelURL'), 'Content');
     $gridFieldConfig = GridFieldConfig_RelationEditor::create()->addComponents(
       new GridFieldDeleteAction('unlinkrelation'));
       $releasesField = new GridField(
@@ -55,13 +69,18 @@ class ArtistPage extends Page{
         $this->Releases(),
         $gridFieldConfig
       );
-    $fields->addFieldToTab('Root.Releases', $releasesField);
+    $fields->addFieldToTab('Root.Main', $releasesField, 'Content');
 
-    $fields->addFieldToTab('Root.Main', new TextField('FacebookURL'), 'Content');
-    $fields->addFieldToTab('Root.Main', new TextField('TwitterURL'), 'Content');
-    $fields->addFieldToTab('Root.Main', new TextField('BandcampURL'), 'Content');
-    $fields->addFieldToTab('Root.Main', new TextField('CartelURL'), 'Content');
-          
+    $gridFieldConfig = GridFieldConfig_RelationEditor::create()->addComponents(
+      new GridFieldDeleteAction('unlinkrelation'));
+      $mediaField = new GridField(
+        'Media',
+        'Media',
+        $this->Media(),
+        $gridFieldConfig
+      );
+    $fields->addFieldToTab('Root.Main', $mediaField, 'Content');
+
     return $fields;
   }
   

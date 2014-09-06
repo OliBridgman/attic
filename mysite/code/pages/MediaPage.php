@@ -9,7 +9,9 @@ class MediaPage extends Page{
 
   private static $many_many = array();
 
-  private static $belongs_many_many = array();
+  private static $belongs_many_many = array(
+    'Artist'  => 'ArtistPage'
+  );
 
   private static $many_many_extraFields = array();
 
