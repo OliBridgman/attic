@@ -48,7 +48,6 @@ class Release extends DataObject{
 
   public function onBeforeWrite() {
     if((!$this->URLSegment || $this->URLSegment == 'new-release') && $this->Title != 'New Release') {
-      // $this->URLSegment = SiteTree::generateURLSegment($this->Title);
       $filter = URLSegmentFilter::create();
       $this->URLSegment = $filter->filter($this->Title);
     }
