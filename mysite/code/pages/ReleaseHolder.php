@@ -41,4 +41,41 @@ class ReleaseHolder extends Page{
 
 class ReleaseHolder_Controller extends Page_Controller{
 
+  private static $allowed_actions = array(
+    'view'
+  );
+
+  public function AllReleases(){
+      return PaginatedList::create(
+          Release::get()->sort('ReleaseNo ASC'),
+          $this->request
+      )->setPageLength(10);
+  }
+
+  public function view(){
+      $releases = $this->CurrentRelease();
+      if($releases && $releases->isInDB()) {
+
+          return array(
+              'Release' => $releases
+          );
+      }
+
+      return $this->redirect(Director::absoluteBaseURL());
+  }
+
+  public function CurrentRelease() {
+      $urlParams = $this->getURLParams();
+
+      $releases = Release::get()
+          ->filter('URLSegment', $urlParams['ID'])
+          ->First();
+
+      return $releases;
+  }
+
+  public function ReleasesLink(){
+      return Page::get()->filter('Title', 'Releases')->First();
+  }
+
 }
