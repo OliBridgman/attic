@@ -24,7 +24,7 @@
     <% include _Header %>
 
     $Layout
-
+    $Form
     <% include _Footer %>
 </body>
 </html>
