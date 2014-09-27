@@ -34,4 +34,8 @@ class Page_Controller extends ContentController {
 		// See: http://doc.silverstripe.org/framework/en/reference/requirements
 	}
 
+	public function FeaturedReleases() {
+		return Release::get()->filter('FeaturedRelease', true);
+	}
+
 }
