@@ -5,7 +5,10 @@ class MediaPage extends Page{
 
   private static $has_one = array();
 
-  private static $has_many = array();
+  private static $has_many = array(
+    'Images'  => 'Media_Image',
+    'Videos'  => 'Media_Video'
+  );
 
   private static $many_many = array();
 
@@ -38,9 +41,54 @@ class MediaPage extends Page{
   private static $can_be_root = true;
 
   private static $hide_ancestor = null;
-  
+
+  function getCMSFields(){
+    $fields = parent::getCMSFields();
+
+    $fields->addFieldToTab('Root.Main', $imageUpload = new UploadField('Images', 'Images'), 'Content');
+    $imageUpload->setAllowedExtensions(array(
+        'jpg',
+        'jpeg',
+        'gif',
+        'png',
+        'pjpeg'
+    ));
+    $fields->addFieldToTab('Root.Main', $videoURL = new TextField('Videos', 'Videos'), 'Content');
+
+    $gridFieldConfig = GridFieldConfig_RelationEditor::create()->addComponents(
+      new GridFieldDeleteAction('unlinkrelation'));
+      $videosField = new GridField(
+        'Videos',
+        'Videos',
+        $this->Videos(),
+        $gridFieldConfig
+      );
+    $fields->addFieldToTab('Root.Main', $videosField, 'Content');
+
+    return $fields;
+  }
 }
 
 class MediaPage_Controller extends Page_Controller{
 
+}
+
+class Media_Image extends Image {
+  private static $has_one = array(
+    'MediaPage' => 'MediaPage'
+  );
+}
+
+class Media_Video extends DataObject {
+  private static $db = array(
+    'Title'     => 'Varchar(255)',
+    'VideoURL'  => 'Varchar(255)'
+  );
+  private static $has_one = array(
+    'MediaPage' => 'MediaPage'
+  );
+  private static $summary_fields = array(
+    'Title',
+    'VideoURL'
+  );
 }
