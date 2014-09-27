@@ -2,13 +2,14 @@
 class Release extends DataObject{
 
   private static $db = array(
-    'Title'           => 'Varchar(255)',
-    'ReleaseNo'       => 'Varchar(255)',
-    'ReleaseDate'     => 'Date',
-    'BandcampURL'     => 'Varchar(255)',
-    'FeaturedRelease' => 'Boolean',
-    'URLSegment'      => 'Varchar(255)',
-    'Content'         => 'HTMLText'
+    'Title'               => 'Varchar(255)',
+    'ReleaseNo'           => 'Varchar(255)',
+    'ReleaseDate'         => 'Date',
+    'BandcampURL'         => 'Varchar(255)',
+    'FeaturedRelease'     => 'Boolean',
+    'FeaturedReleaseDate' => 'SS_DateTime',
+    'URLSegment'          => 'Varchar(255)',
+    'Content'             => 'HTMLText'
   );
 
   private static $has_one = array(
@@ -29,12 +30,11 @@ class Release extends DataObject{
 
     $fields->removeByName('URLSegment');
     $fields->removeByName('ReleaseDate');
-    $fields->removeByName('FeaturedRelease');
+    $fields->removeByName('FeaturedReleaseDate');
     $fields->removeByName('TopImage');
 
     DateField::set_default_config('showcalendar', true);
     $fields->addFieldToTab('Root.Main', new DateField('ReleaseDate', 'ReleaseDate'), 'Content');
-    $fields->addFieldToTab('Root.Main', new CheckboxField('FeaturedRelease'), 'Content');
     $fields->addFieldToTab('Root.Main', $topUpload = new UploadField('TopImage', 'Top Image'), 'Content');
     $topUpload->setAllowedExtensions(array(
         'jpg',
@@ -47,6 +47,7 @@ class Release extends DataObject{
   }
 
   public function onBeforeWrite() {
+    // Build URL
     if((!$this->URLSegment || $this->URLSegment == 'new-release') && $this->Title != 'New Release') {
       $filter = URLSegmentFilter::create();
       $this->URLSegment = $filter->filter($this->Title);
@@ -65,6 +66,20 @@ class Release extends DataObject{
     while($this->LookForExistingURLSegment($this->URLSegment)) {
       $this->URLSegment = preg_replace('/-[0-9]+$/', null, $this->URLSegment) . '-' . $count;
       $count++;
+    }
+    // Set/Unset Featured Release
+    if ($this->FeaturedRelease && $this->FeaturedReleaseDate == NULL) {
+      $date = date('Y-m-d H:i:s');
+      $this->FeaturedReleaseDate = $date;
+      $currentlyFeatured = Release::get()->filter(array(
+        'FeaturedRelease' => true
+      ))->sort('FeaturedReleaseDate DESC')->toArray();
+      if (sizeof($currentlyFeatured) == 3){ // Max number of featured releases
+        $unfeaturedRelease = array_pop($currentlyFeatured);
+        $unfeaturedRelease->FeaturedRelease = false;
+        $unfeaturedRelease->FeaturedReleaseDate = NULL;
+        $unfeaturedRelease->write();
+      }
     }
     parent::onBeforeWrite();
   }
