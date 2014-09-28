@@ -1,7 +1,10 @@
 <?php
 class MediaPage extends Page{
 
-  private static $db = array();
+  private static $db = array(
+    'FeaturedMedia'     => 'Boolean',
+    'FeaturedMediaDate' => 'SS_DateTime'
+  );
 
   private static $has_one = array();
 
@@ -42,7 +45,7 @@ class MediaPage extends Page{
 
   private static $hide_ancestor = null;
 
-  function getCMSFields(){
+  public function getCMSFields(){
     $fields = parent::getCMSFields();
 
     $fields->addFieldToTab('Root.Main', $imageUpload = new UploadField('Images', 'Images'), 'Content');
@@ -65,7 +68,27 @@ class MediaPage extends Page{
       );
     $fields->addFieldToTab('Root.Main', $videosField, 'Content');
 
+    $fields->addFieldToTab('Root.Main', new CheckboxField('FeaturedMedia', 'FeaturedMedia'), 'Content');
+
     return $fields;
+  }
+
+  public function onBeforeWrite(){
+    // Set/Unset Featured Media
+    if ($this->FeaturedMedia && $this->FeaturedMediaDate == NULL) {
+      $date = date('Y-m-d H:i:s');
+      $this->FeaturedMediaDate = $date;
+      $currentlyFeatured = MediaPage::get()->filter(array(
+        'FeaturedMedia' => true
+      ))->sort('FeaturedMediaDate DESC')->toArray();
+      if (sizeof($currentlyFeatured) == 3){ // Max number of featured MediaPages
+        $unfeaturedMedia = array_pop($currentlyFeatured);
+        $unfeaturedMedia->FeaturedMedia = false;
+        $unfeaturedMedia->FeaturedMediaDate = NULL;
+        $unfeaturedMedia->write();
+      }
+    }
+    parent::onBeforeWrite();
   }
 }
 
