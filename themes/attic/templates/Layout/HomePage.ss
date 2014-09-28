@@ -1,2 +1,4 @@
-$Title
-$Content
+<div>
+  $Title
+  $Content
+</div>
