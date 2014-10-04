@@ -84,8 +84,13 @@ class Release extends DataObject{
     parent::onBeforeWrite();
   }
 
+  public function ReleaseLink() {
+    $releaseHolder = ReleaseHolder::get()->First();
+    return Controller::join_links($releaseHolder->URLSegment, "view", $this->URLSegment);
+  }
+
   //Test whether the URLSegment exists on another Release
-  function LookForExistingURLSegment($URLSegment) {
+  private function LookForExistingURLSegment($URLSegment) {
     return (DataObject::get_one('Release', "URLSegment = '" . $URLSegment ."' AND ID != " . $this->ID));
   }
 }
