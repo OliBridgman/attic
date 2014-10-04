@@ -1,4 +1,8 @@
-<div>
-  $Title
+<section>
   $Content
-</div>
+  <% loop $LatestNews %>
+    <div class="news">
+      <% include _NewsTeaser %>
+    </div>
+  <% end_loop %>
+</section>

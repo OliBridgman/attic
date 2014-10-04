@@ -1,6 +1,3 @@
-<div>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-</div>
+<% include _RecentReleases %>
+<% include _RecentNews %>
+<% include _RecentMedia %>
