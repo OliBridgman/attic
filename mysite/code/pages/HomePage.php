@@ -41,4 +41,12 @@ class HomePage extends Page{
 
 class HomePage_Controller extends Page_Controller{
 
+  private static $allowed_actions = array(
+    'LatestNews'
+  );
+
+  public function LatestNews($num=5) {
+    $holder = NewsHolder::get()->First();
+    return ($holder) ? NewsPage::get()->filter('ParentID', $holder->ID)->sort('Date DESC')->limit($num) : false;
+  }
 }
