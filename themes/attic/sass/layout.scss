@@ -6,7 +6,7 @@
   margin: 0 auto;
 }
 
-header, .top-bar, .bottom-bar, nav {
+header, .top-bar, .bottom-bar, nav, .roster, .releases {
   @include flexbox();
   @include flex-direction(row);
   @include flex-wrap(wrap);
@@ -23,11 +23,15 @@ header, .top-bar, .bottom-bar, nav {
   background-repeat: no-repeat;
 }
 
-nav {
+nav, .roster, .releases {
   @include justify-content(space-around);
 }
 
-.left {
+.right {
+  @include justify-content(center);
+}
+
+.left, .right {
   @include flexbox();
   @include flex-direction(row);
   @include flex-wrap(wrap);
