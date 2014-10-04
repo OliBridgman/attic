@@ -1,5 +1,9 @@
-$Title
-$Content
-<% loop AllReleases %>
+<section class="content">
   <h1>$Title</h1>
-<% end_loop %>
+  $Content
+</section>
+<section class="releases">
+  <% loop AllReleases %>
+    <% include _ReleaseTeaser %>
+  <% end_loop %>
+</section>
