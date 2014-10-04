@@ -11,9 +11,9 @@
       </div>
     </div>
     <div class="right">
-      <a href="#">F</a>
-      <a href="#">T</a>
-      <a href="#">M</a>
+      <a class="social-btn facebook" href="https://www.facebook.com/theatticdunedin"></a>
+      <a class="social-btn twitter" href="https://www.twitter.com/theatticdunedin"></a>
+      <a class="social-btn mail"href="mailto:theatticrattle@gmail.com"></a>
     </div>
   </div>
   <div class="bottom-bar">
