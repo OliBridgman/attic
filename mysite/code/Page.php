@@ -38,4 +38,8 @@ class Page_Controller extends ContentController {
 		return Release::get()->filter('FeaturedRelease', true);
 	}
 
+	public function FeaturedMedia() {
+		return MediaPage::get()->filter('FeaturedMedia', true);
+	}
+
 }
