@@ -27,10 +27,10 @@
       $Layout
       $Form
     </article>
-    <aside class="sidebar">
+    <%-- <aside class="sidebar">
       <% include _Sidebar %>
-    </aside>
-    <% include _Footer %>
+    </aside> --%>
   </div>
+  <% include _Footer %>
 </body>
 </html>
