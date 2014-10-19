@@ -17,12 +17,8 @@
     </div>
   </div>
   <div class="bottom-bar">
-    <div class="left">
       <div class="banner" style="background-image: url('$SiteConfig.BannerImage.url');">
       </div>
       <% include _Navigation %>
-    </div>
-    <div class="right media-player">
-    </div>
   </div>
 </header>

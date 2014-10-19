@@ -1,0 +1,1 @@
+<h2>Recent News</h2>
