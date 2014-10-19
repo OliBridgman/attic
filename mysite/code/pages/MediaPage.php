@@ -6,7 +6,10 @@ class MediaPage extends Page{
     'FeaturedMediaDate' => 'SS_DateTime'
   );
 
-  private static $has_one = array();
+  private static $has_one = array(
+    'PreviewImage' => 'Image',
+    'BannerImage' => 'Image'
+  );
 
   private static $has_many = array(
     'Images'  => 'Media_Image',

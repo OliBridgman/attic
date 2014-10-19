@@ -13,7 +13,8 @@ class Release extends DataObject{
   );
 
   private static $has_one = array(
-    'TopImage' => 'Image'
+    'PreviewImage' => 'Image',
+    'BannerImage' => 'Image'
   );
 
   private static $belongs_many_many = array(
@@ -31,12 +32,21 @@ class Release extends DataObject{
     $fields->removeByName('URLSegment');
     $fields->removeByName('ReleaseDate');
     $fields->removeByName('FeaturedReleaseDate');
-    $fields->removeByName('TopImage');
+    $fields->removeByName('PreviewImage');
+    $fields->removeByName('BannerImage');
 
     DateField::set_default_config('showcalendar', true);
     $fields->addFieldToTab('Root.Main', new DateField('ReleaseDate', 'ReleaseDate'), 'Content');
-    $fields->addFieldToTab('Root.Main', $topUpload = new UploadField('TopImage', 'Top Image'), 'Content');
-    $topUpload->setAllowedExtensions(array(
+    $fields->addFieldToTab('Root.Main', $previewUpload = new UploadField('PreviewImage', 'Preview Image'), 'Content');
+    $previewUpload->setAllowedExtensions(array(
+        'jpg',
+        'jpeg',
+        'gif',
+        'png',
+        'pjpeg'
+    ));
+    $fields->addFieldToTab('Root.Main', $bannerUpload = new UploadField('BannerImage', 'Banner Image'), 'Content');
+    $bannerUpload->setAllowedExtensions(array(
         'jpg',
         'jpeg',
         'gif',

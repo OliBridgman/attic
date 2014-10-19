@@ -6,7 +6,7 @@ class NewsPage extends Page{
   );
 
   private static $has_one = array(
-    'TopImage' => 'Image'
+    'BannerImage' => 'Image'
   );
 
   private static $has_many = array();
@@ -47,7 +47,7 @@ class NewsPage extends Page{
     $dateField->setConfig('showcalendar', true);
     $fields->addFieldToTab('Root.Main', $dateField, 'Content');
     $fields->addFieldToTab('Root.Main', new TextField('Author'), 'Content');
-    $fields->addFieldToTab('Root.Main', $topUpload = new UploadField('TopImage', 'Top Image'), 'Content');
+    $fields->addFieldToTab('Root.Main', $topUpload = new UploadField('BannerImage', 'Banner Image'), 'Content');
     $topUpload->setAllowedExtensions(array(
         'jpg',
         'jpeg',

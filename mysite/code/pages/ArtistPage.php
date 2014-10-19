@@ -9,8 +9,8 @@ class ArtistPage extends Page{
   );
 
   private static $has_one = array(
-    'TopImage'  => 'Image',
-    'SideImage' => 'Image'
+    'PreviewImage'  => 'Image',
+    'BannerImage' => 'Image'
   );
 
   private static $has_many = array();
@@ -50,16 +50,16 @@ class ArtistPage extends Page{
 
   function getCMSFields(){
     $fields = parent::getCMSFields();
-    $fields->addFieldToTab('Root.Main', $topUpload = new UploadField('TopImage', 'Top Image'), 'Content');
-    $topUpload->setAllowedExtensions(array(
+    $fields->addFieldToTab('Root.Main', $previewUpload = new UploadField('PreviewImage', 'Preview Image'), 'Content');
+    $previewUpload->setAllowedExtensions(array(
         'jpg',
         'jpeg',
         'gif',
         'png',
         'pjpeg'
     ));
-    $fields->addFieldToTab('Root.Main', $sideUpload = new UploadField('SideImage', 'Side Image'), 'Content');
-    $topUpload->setAllowedExtensions(array(
+    $fields->addFieldToTab('Root.Main', $bannerUpload = new UploadField('BannerImage', 'Banner Image'), 'Content');
+    $bannerUpload->setAllowedExtensions(array(
         'jpg',
         'jpeg',
         'gif',
