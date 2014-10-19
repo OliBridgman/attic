@@ -1,8 +1,5 @@
 <section>
-  $Content
   <% loop $LatestNews %>
-    <div class="news">
-      <% include _NewsTeaser %>
-    </div>
+    <% include _NewsTeaser %>
   <% end_loop %>
 </section>
