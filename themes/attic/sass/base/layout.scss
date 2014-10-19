@@ -1,0 +1,79 @@
+$small-screen: 640px;
+body {
+  color: white;
+  background-color: black;
+}
+.container {
+  @include flexbox();
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+header, .top-bar, .bottom-bar, nav, .roster, .releases {
+  @include flexbox();
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  @include flex-grow(1);
+  @include flex-basis(100%);
+}
+
+.banner {
+  @include flex-grow(1);
+  @include flex-basis(100%);
+  height: 200px;
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+nav {
+  @include justify-content(space-between); 
+}
+
+.roster, .releases {
+  @include justify-content(space-around);
+}
+
+.right {
+  @include justify-content(center);
+  @include align-items(center);
+}
+
+.left, .right {
+  @include flexbox();
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+}
+.half {
+  width: 50%;
+}
+.side-image img {
+  width: 100%;
+  height: 100%;
+}
+.artist-detail {
+  @include flexbox();
+}
+article, footer {
+  @include flex-grow(1);
+  @include flex-basis(100%);
+}
+.left {
+  @include flex-grow(1);
+  @include flex-basis(75%);
+}
+
+aside, .right {
+  @include flex-shrink(1);
+  @include flex-basis(25%);
+}
+
+
+
+@media screen and (max-width: $small-screen) {
+  nav, aside, .media-player {
+    display: none;
+  }
+}

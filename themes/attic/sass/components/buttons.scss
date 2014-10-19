@@ -1,0 +1,40 @@
+.social-btn {
+  width: 25px;
+  height: 25px;
+  margin: 5px 10px;
+  background-size: 100%;
+  transition: all ease-in-out 0.3s;
+  &.facebook {
+    background-image: url("../images/FB_WHITE.png");
+    &:hover {
+      background-image: url("../images/FB_YELLOW.png");
+    }
+  }
+  &.twitter {
+    background-image: url("../images/TWIT_WHITE.png");
+    &:hover {
+      background-image: url("../images/TWIT_YELLOW.png");
+    }
+  }
+  &.mail {
+    background-image: url("../images/MAIL_WHITE.png");
+    &:hover {
+      background-image: url("../images/MAIL_YELLOW.png");
+    }
+  }
+}
+
+.btn-large {
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  padding: 10px 0;
+  border: solid 1px $yellow;
+  color: $white;
+  transition: ease 0.8s all;
+  &:hover {
+    transition: ease 0.8s all;
+    color: $yellow;
+  }
+}

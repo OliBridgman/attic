@@ -1,0 +1,12 @@
+nav {
+  margin: 1.2em 0.7em;
+}
+
+nav a {
+  transition: color ease 0.5s;
+}
+
+nav .current, nav .section, nav a:hover {
+  color: $yellow;
+  transition: color ease 0.5s;
+}
