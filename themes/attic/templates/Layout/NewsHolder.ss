@@ -1,9 +1,11 @@
 <section>
   <% loop $Children %>
-      <% if $Pos <= 3 %>
-        <% include _NewsTeaser %>
-      <% else %>
-        <h3><a href="$Link">$Title</a></h3>
+    <% if $Up.getAuthor %>
+       <% if $Author == $Up.getAuthor %>
+        <% include _NewsTeaser ParentLink=$Up.Link %>
       <% end_if %>
+    <% else %>
+      <% include _NewsTeaser ParentLink=$Up.Link %>
+    <% end_if %>
   <% end_loop %>
 </section>

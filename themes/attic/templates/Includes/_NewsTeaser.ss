@@ -1,6 +1,6 @@
 <div class="news-item">
   <h2><a href="$Link" title="Read more on &quot;{$Title}&quot;">$Title.UpperCase</a></h2>
-  <p class="detail">Posted By <a href="PostsByAuthor()">$Author</a> | $Date.Nice</p>
+  <p class="detail">Posted By <a href="$ParentLink?author=$Author">$Author</a> | $Date.Nice</p>
   <div class="top-image" style="background-image: url('$BannerImage.url');">
   </div>
   <p>$Content.FirstParagraph <a href="$Link" title="Read more on &quot;{$Title}&quot;">READ MORE &raquo;</a></p>

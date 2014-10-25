@@ -39,4 +39,19 @@ class NewsHolder extends Page{
 
 class NewsHolder_Controller extends Page_Controller{
 
+  private $author;
+
+  private static $allowed_actions = array(
+    'getAuthor'
+  );
+
+  public function init() {
+    parent::init();
+    $this->author = (isset($_GET['author'])) ? $_GET['author'] : '';
+  }
+
+  public function getAuthor() {
+    return $this->author;
+  }
+
 }
