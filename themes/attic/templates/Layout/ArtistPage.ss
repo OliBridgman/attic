@@ -22,5 +22,14 @@
 </section>
 <h2 class="heading-wrap">Media</h2>
 <section class="media">
+<% loop Media %>
+  <% include _MediaTeaser %>
+<% end_loop %>
+</section>
 
+<section class="tags">
+<h2 class="heading-wrap">Tags</h2>
+  <% loop Tags %>
+    <h3><a href="$SearchByTag?tag=$Title">$Title</a></h3>
+  <% end_loop %>
 </section>

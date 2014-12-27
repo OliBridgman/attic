@@ -90,6 +90,15 @@ class ArtistPage extends Page{
       );
     $fields->addFieldToTab('Root.Main', $mediaField, 'Content');
 
+    $gridFieldConfig = GridFieldConfig_RelationEditor::create()->addComponents(
+      new GridFieldDeleteAction('unlinkrelation'));
+      $tagsField = new GridField(
+        'Tags',
+        'Tags',
+        $this->Tags(),
+        $gridFieldConfig
+      );
+    $fields->addFieldToTab('Root.Tags', $tagsField);
     return $fields;
   }
   

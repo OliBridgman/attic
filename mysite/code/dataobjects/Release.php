@@ -17,6 +17,10 @@ class Release extends DataObject{
     'BannerImage' => 'Image'
   );
 
+  private static $many_many = array(
+    'Tags' => 'Tag'
+  );
+
   private static $belongs_many_many = array(
     'Artist' => 'ArtistPage'
   );

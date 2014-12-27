@@ -7,9 +7,13 @@ class Page extends SiteTree {
 	private static $has_one = array(
 	);
 
+	private static $many_many = array(
+		'Tags' => 'Tag'
+	);
+
 }
 class Page_Controller extends ContentController {
-
+	private $tag;
 	/**
 	 * An array of actions that can be accessed via a request. Each array element should be an action name, and the
 	 * permissions or conditions required to allow the user to access it.
@@ -25,11 +29,13 @@ class Page_Controller extends ContentController {
 	 *
 	 * @var array
 	 */
-	private static $allowed_actions = array (
+	private static $allowed_actions = array(
+		'SearchByTag'
 	);
 
 	public function init() {
 		parent::init();
+		$this->tag = (isset($_GET['tag'])) ? $_GET['tag'] : '';
 		// You can include any CSS or JS required by your project here.
 		// See: http://doc.silverstripe.org/framework/en/reference/requirements
 	}
@@ -40,6 +46,15 @@ class Page_Controller extends ContentController {
 
 	public function FeaturedMedia() {
 		return MediaPage::get()->filter('FeaturedMedia', true);
+	}
+
+	public function SearchByTag() {
+		if ($this->tag) {
+			$tagItem = Tag::get()->filter(array('Title' => $this->tag))->First();
+			// print_r($tagItem);
+			$pages = Page::get()->filter('Tags', $tagItem)->First();
+			print_r($pages);
+		}
 	}
 
 }
