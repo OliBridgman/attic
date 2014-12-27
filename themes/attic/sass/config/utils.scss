@@ -1,4 +1,18 @@
 .heading-wrap {
   padding: 2em 0.3em 0.3em 0.3em;
   border-bottom: solid 1px $yellow;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.line-break {
+  display: block; 
+  height: 1px;
+  border: 0;
+  border-top: 1px solid;
+  margin: 0.8em -10px;
+  padding: 0;
+  &.yellow {
+    border-top-color:  $yellow;
+  }
 }

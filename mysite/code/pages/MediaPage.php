@@ -73,6 +73,16 @@ class MediaPage extends Page{
 
     $fields->addFieldToTab('Root.Main', new CheckboxField('FeaturedMedia', 'FeaturedMedia'), 'Content');
 
+    $gridFieldConfig = GridFieldConfig_RelationEditor::create()->addComponents(
+      new GridFieldDeleteAction('unlinkrelation'));
+      $tagsField = new GridField(
+        'Tags',
+        'Tags',
+        $this->Tags(),
+        $gridFieldConfig
+      );
+    $fields->addFieldToTab('Root.Tags', $tagsField);
+
     return $fields;
   }
 
@@ -93,10 +103,17 @@ class MediaPage extends Page{
     }
     parent::onBeforeWrite();
   }
+
+  public function PreviewImage() {
+    return $this->Images()->First();
+  }
 }
 
 class MediaPage_Controller extends Page_Controller{
 
+  private static $allowed_actions = array(
+    'saveButton'
+  );
 }
 
 class Media_Image extends Image {
@@ -117,4 +134,9 @@ class Media_Video extends DataObject {
     'Title',
     'VideoURL'
   );
+  public function EmbedVideo() {
+    $oembed = Oembed::get_oembed_from_url($this->VideoURL);
+    if(!$oembed) return null;
+    return $oembed->forTemplate();
+  }
 }

@@ -1,7 +1,7 @@
 $small-screen: 640px;
 body {
   color: white;
-  background-color: black;
+  background-color: #191919;
 }
 .container {
   @include flexbox();
@@ -10,8 +10,11 @@ body {
   max-width: 980px;
   margin: 0 auto;
 }
-
-header, .top-bar, .bottom-bar, nav, .roster, .releases {
+.main {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+header, .top-bar, .bottom-bar, nav, .roster, .releases, .media {
   @include flexbox();
   @include flex-direction(row);
   @include flex-wrap(wrap);
@@ -32,7 +35,7 @@ nav {
   @include justify-content(space-between); 
 }
 
-.roster, .releases {
+.roster, .releases, .media {
   @include justify-content(space-around);
 }
 
@@ -73,6 +76,10 @@ aside, .right {
 
 
 @media screen and (max-width: $small-screen) {
+  .artist-detail {
+    @include flex-direction(column);
+  }
+
   nav, aside, .media-player {
     display: none;
   }

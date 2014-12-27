@@ -27,10 +27,9 @@
       $Layout
       $Form
     </article>
-    <%-- <aside class="sidebar">
-      <% include _Sidebar %>
-    </aside> --%>
   </div>
   <% include _Footer %>
+  <script src="themes/attic/javascripts/masonry.pkgd.min.js"></script>
+  <script src="themes/attic/javascripts/attic.js"></script>
 </body>
 </html>
