@@ -2,12 +2,10 @@
   <div class="top-bar">
     <div class="left">
       <div class="left">
-        <a class="brand" href="$BaseURL">
-          <img class="logo" src="themes/attic/images/ATTIC_LOGO_BANNER.png" alt="The Attic" />
-        </a>
+        <img class="logo" src="themes/attic/images/ATTIC_LOGO_BANNER_WHITE.png" alt="The Attic" />
       </div>
       <div class="right">
-        <img src="themes/attic/images/ATTIC_EST_BANNER.png" id="attic-established" alt="Established 2011 - Dunedin, New Zealand" />
+        <img src="themes/attic/images/ATTIC_EST_BANNER_WHITE.png" id="attic-established" alt="Established 2011 - Dunedin, New Zealand" />
       </div>
     </div>
     <div class="right">

@@ -14,7 +14,7 @@ body {
   margin-left: 10px;
   margin-right: 10px;
 }
-header, .top-bar, .bottom-bar, nav, .roster, .releases, .media {
+header, .top-bar, .bottom-bar, nav, .roster, .releases, .media, .bastion {
   @include flexbox();
   @include flex-direction(row);
   @include flex-wrap(wrap);

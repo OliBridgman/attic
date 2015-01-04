@@ -114,6 +114,11 @@ class MediaPage_Controller extends Page_Controller{
   private static $allowed_actions = array(
     'saveButton'
   );
+
+  public function init() {
+    parent::init();
+    Requirements::javascript("themes/attic/javascripts/masonry.pkgd.min.js");
+  }
 }
 
 class Media_Image extends Image {

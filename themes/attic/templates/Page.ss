@@ -29,7 +29,6 @@
     </article>
   </div>
   <% include _Footer %>
-  <script src="themes/attic/javascripts/masonry.pkgd.min.js"></script>
   <script src="themes/attic/javascripts/attic.js"></script>
 </body>
 </html>

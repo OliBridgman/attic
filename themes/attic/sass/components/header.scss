@@ -1,0 +1,26 @@
+$mobile-screen: 390px;
+$small-screen: 640px;
+.logo {
+  height: 22px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+@media screen and (max-width: $small-screen) {
+  .top-bar .left {
+    @include flex-basis(65%);
+  }
+  .top-bar .right {
+    @include flex-basis(35%);
+  }
+}
+@media screen and (max-width: $mobile-screen) {
+  .top-bar > .left > .right {
+    display: none;
+  }
+  .top-bar .left {
+    @include flex-basis(50%);
+  }
+  .top-bar .right {
+    @include flex-basis(50%);
+  }
+}
