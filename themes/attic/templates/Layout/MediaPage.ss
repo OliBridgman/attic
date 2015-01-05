@@ -10,7 +10,7 @@
   <% end_loop %>
   <% loop Images %>
   <div class="bastion-child">
-    <img src="$Filename" alt="$Title image"  />
+    <img src="$Filename" alt="$Title image" data-jslghtbx />
   </div>
   <% end_loop %>
 </div>

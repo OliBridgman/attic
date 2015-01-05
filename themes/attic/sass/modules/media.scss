@@ -58,6 +58,7 @@ $medium-screen: 720px;
 .bastion-child img {
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: $medium-screen) {

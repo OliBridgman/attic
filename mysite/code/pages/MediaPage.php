@@ -118,6 +118,8 @@ class MediaPage_Controller extends Page_Controller{
   public function init() {
     parent::init();
     Requirements::javascript("themes/attic/javascripts/masonry.pkgd.min.js");
+    Requirements::javascript("themes/attic/javascripts/lightbox.min.js");
+    Requirements::javascript("themes/attic/javascripts/media.js");
   }
 }
 
