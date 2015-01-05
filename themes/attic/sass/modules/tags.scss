@@ -1,0 +1,17 @@
+.tags a {
+  width: 15%;
+  background-color: rgba(252,217,1,0.5);
+  margin-right: 10px;
+  padding: 5px;
+  transition: 1s ease all;
+  text-align: center;
+  box-sizing: border-box;
+  border: solid 1px transparent;
+  @include align-self(center);
+}
+
+.tags a:hover {
+  background-color: rgba(252,217,1,0);
+  transition: 1s ease all;
+  border: solid 1px #FCD901;
+}
