@@ -172,7 +172,7 @@ body {
 }
 
 /* line 17, ../sass/base/layout.scss */
-header, .top-bar, .bottom-bar, nav, .roster, .releases, .media, .bastion {
+header, .top-bar, .bottom-bar, nav, .roster, .releases, .media, .tags, .bastion {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -462,6 +462,11 @@ footer {
   margin-top: 80px;
 }
 
+/* line 8, ../sass/components/footer.scss */
+footer p {
+  color: #000;
+}
+
 /* line 1, ../sass/modules/news.scss */
 .news-item {
   padding-bottom: 20px;
@@ -588,4 +593,26 @@ footer {
   .bastion-child {
     width: 100%;
   }
+}
+/* line 1, ../sass/modules/tags.scss */
+.tags a {
+  width: 15%;
+  background-color: rgba(252, 217, 1, 0.5);
+  margin-right: 10px;
+  padding: 5px;
+  transition: 1s ease all;
+  text-align: center;
+  box-sizing: border-box;
+  border: solid 1px transparent;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+/* line 13, ../sass/modules/tags.scss */
+.tags a:hover {
+  background-color: rgba(252, 217, 1, 0);
+  transition: 1s ease all;
+  border: solid 1px #FCD901;
 }

@@ -27,9 +27,9 @@
 <% end_loop %>
 </section>
 
-<section class="tags">
 <h2 class="heading-wrap">Tags</h2>
+<section class="tags">
   <% loop Tags %>
-    <h3><a href="$SearchByTag?tag=$Title">$Title</a></h3>
+    <a href="$SearchByTag?tag=$Title">$Title</a>
   <% end_loop %>
 </section>
