@@ -41,18 +41,26 @@ $medium-screen: 720px;
   }
 }
 
+.bastion {
+  margin-bottom: 10px;
+  &.image {
+    margin-left: 20px;
+  }
+}
+
 .bastion-child {
-  width: 48%;
+  width: 32%;
   margin-bottom: 10px;
   box-sizing: border-box;
-}
-
-.bastion-child:nth-child(odd) {
-  margin-right: 1%;
-}
-
-.bastion-child:nth-child(even) {
-  margin-left: 1%;
+  &.video {
+    width: 48%;
+    &:nth-child(odd) {
+      margin-right: 2%;
+    }
+    &:nth-child(even) {
+      margin-left: 2%;
+    }
+  }
 }
 
 .bastion-child img {
@@ -62,6 +70,9 @@ $medium-screen: 720px;
 }
 
 @media screen and (max-width: $medium-screen) {
+  .bastion.image {
+    margin-left: 0;
+  }
   .bastion-child {
     width: 100%;
   }

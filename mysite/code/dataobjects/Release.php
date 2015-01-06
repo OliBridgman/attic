@@ -9,7 +9,11 @@ class Release extends DataObject{
     'FeaturedRelease'     => 'Boolean',
     'FeaturedReleaseDate' => 'SS_DateTime',
     'URLSegment'          => 'Varchar(255)',
-    'Content'             => 'HTMLText'
+    'TrackOne'            => 'Varchar(255)',
+    'TrackTwo'            => 'Varchar(255)',
+    'TrackThree'          => 'Varchar(255)',
+    'Content'             => 'HTMLText',
+    'MetaInfo'            => 'HTMLText'
   );
 
   private static $has_one = array(
@@ -106,5 +110,13 @@ class Release extends DataObject{
   //Test whether the URLSegment exists on another Release
   private function LookForExistingURLSegment($URLSegment) {
     return (DataObject::get_one('Release', "URLSegment = '" . $URLSegment ."' AND ID != " . $this->ID));
+  }
+
+  public function IsCompilation() {
+    return $this->Artist()->first() != $this->Artist()->last();
+  }
+
+  public function SingleArtistName() {
+    return $this->Artist()->first()->title;
   }
 }
