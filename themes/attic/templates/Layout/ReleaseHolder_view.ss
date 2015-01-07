@@ -40,6 +40,14 @@
     </div>
   </div>
 </section>
+<% if $Tags %>
+  <h2 class="heading-wrap">Tags</h2>
+  <section class="tags">
+    <% loop Tags %>
+      <a href="search?tag=$Title">$Title</a>
+    <% end_loop %>
+  </section>
+<% end_if %>
 <script src="//connect.soundcloud.com/sdk.js"></script>
 <script>
   SC.initialize({

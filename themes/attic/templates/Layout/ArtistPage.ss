@@ -42,7 +42,7 @@
   <h2 class="heading-wrap">Tags</h2>
   <section class="tags">
     <% loop Tags %>
-      <a href="$SearchByTag?tag=$Title">$Title</a>
+      <a href="search?tag=$Title">$Title</a>
     <% end_loop %>
   </section>
 <% end_if %>
