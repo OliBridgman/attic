@@ -1,7 +1,9 @@
 <?php
 class ReleaseHolder extends Page{
 
-  private static $db = array();
+  private static $db = array(
+    'SinglesClub' => 'Boolean'
+  );
 
   private static $has_one = array();
 
@@ -36,7 +38,13 @@ class ReleaseHolder extends Page{
   private static $can_be_root = true;
 
   private static $hide_ancestor = null;
-  
+
+  public function getCMSFields() {
+    $fields = parent::getCMSFields();
+    $fields->addFieldToTab('Root.Main', new CheckboxField('SinglesClub', 'Singles Club'), 'Content');
+
+    return $fields;
+  }
 }
 
 class ReleaseHolder_Controller extends Page_Controller{
@@ -45,9 +53,20 @@ class ReleaseHolder_Controller extends Page_Controller{
     'view'
   );
 
-  public function AllReleases(){
+  public function RegularReleases() {
     return PaginatedList::create(
-      Release::get()->sort('ReleaseNo ASC'),
+      Release::get()
+        ->filter('SinglesClubRelease', false)
+        ->sort('ReleaseNo ASC'),
+      $this->request
+    )->setPageLength(10);
+  }
+
+  public function SinglesClubReleases() {
+    return PaginatedList::create(
+      Release::get()
+        ->filter('SinglesClubRelease', true)
+        ->sort('ReleaseNo ASC'),
       $this->request
     )->setPageLength(10);
   }
@@ -71,10 +90,6 @@ class ReleaseHolder_Controller extends Page_Controller{
       ->First();
 
     return $releases;
-  }
-
-  public function ReleasesLink(){
-    return Page::get()->filter('Title', 'Releases')->First();
   }
 
 }

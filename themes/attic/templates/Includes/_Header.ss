@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="bottom-bar">
-      <div class="banner" style="background-image: url('$SiteConfig.BannerImage.url');">
+      <div class="banner" style="background-image: url('<% if SinglesClub %>themes/attic/images/SINGLES_CLUB_BANNER.jpg<% else_if $SiteConfig.BannerImage %>$SiteConfig.BannerImage.url<% else %>themes/attic/images/ATTIC_BANNER_OC.jpg<% end_if %>');">
       </div>
       <% include _Navigation %>
   </div>

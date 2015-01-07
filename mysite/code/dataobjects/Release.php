@@ -8,6 +8,7 @@ class Release extends DataObject{
     'BandcampURL'         => 'Varchar(255)',
     'FeaturedRelease'     => 'Boolean',
     'FeaturedReleaseDate' => 'SS_DateTime',
+    'SinglesClubRelease'  => 'Boolean',
     'URLSegment'          => 'Varchar(255)',
     'TrackOne'            => 'Varchar(255)',
     'TrackTwo'            => 'Varchar(255)',
@@ -44,7 +45,7 @@ class Release extends DataObject{
     $fields->removeByName('BannerImage');
 
     DateField::set_default_config('showcalendar', true);
-    $fields->addFieldToTab('Root.Main', new DateField('ReleaseDate', 'ReleaseDate'), 'Content');
+    $fields->addFieldToTab('Root.Main', new DateField('ReleaseDate', 'Release Date'), 'Content');
     $fields->addFieldToTab('Root.Main', $previewUpload = new UploadField('PreviewImage', 'Preview Image'), 'Content');
     $previewUpload->setAllowedExtensions(array(
         'jpg',
@@ -103,7 +104,11 @@ class Release extends DataObject{
   }
 
   public function ReleaseLink() {
-    $releaseHolder = ReleaseHolder::get()->First();
+    if ($this->SinglesClubRelease){
+      $releaseHolder = ReleaseHolder::get()->filter('Title', 'Singles Club')->First();
+    } else {
+      $releaseHolder = ReleaseHolder::get()->filter('Title', 'Releases')->First();
+    }
     return Controller::join_links($releaseHolder->URLSegment, "view", $this->URLSegment);
   }
 

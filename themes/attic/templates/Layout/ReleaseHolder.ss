@@ -3,7 +3,13 @@
   $Content
 </section>
 <section class="releases">
-  <% loop AllReleases %>
+<% if SinglesClub %>
+  <% loop SinglesClubReleases %>
     <% include _ReleaseTeaser %>
   <% end_loop %>
+<% else %>
+  <% loop RegularReleases %>
+    <% include _ReleaseTeaser %>
+  <% end_loop %>
+<% end_if %>
 </section>

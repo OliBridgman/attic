@@ -19,9 +19,11 @@
     <% if $ReleaseDate %>
       <p class="line"><strong>Release Date:</strong> $ReleaseDate</p>
     <% end_if %>
-    <div class="line">
-      $MetaInfo
-    </div>
+    <% if $MetaInfo %>
+      <div class="line">
+        $MetaInfo
+      </div>
+    <% end_if %>
     <div class="buttons">
       <% if $BandcampURL %>
         <a class="btn-large bandcamp" href="$BandcampURL">Purchase on Bandcamp</a>
