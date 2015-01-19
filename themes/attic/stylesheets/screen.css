@@ -771,6 +771,40 @@ nav .current, nav .section, nav a:hover {
   transition: color ease 0.5s;
 }
 
+/* line 1, ../sass/components/tabs.scss */
+.tab-header-content {
+  display: inline;
+}
+
+/* line 5, ../sass/components/tabs.scss */
+.tab-link {
+  display: inline-block;
+  padding: 20px;
+  border: 1px solid transparent;
+}
+/* line 9, ../sass/components/tabs.scss */
+.tab-link.is-active {
+  border: solid 1px #FCD901;
+  border-bottom: solid 2px #191919;
+  margin-bottom: -1px;
+}
+
+/* line 16, ../sass/components/tabs.scss */
+.tab-content {
+  display: none;
+  width: 100%;
+  float: left;
+}
+/* line 20, ../sass/components/tabs.scss */
+.tab-content.is-open {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-top: solid 1px #FCD901;
+}
+
 /* line 1, ../sass/components/footer.scss */
 footer {
   background-color: #FCD901;
@@ -781,36 +815,37 @@ footer {
 
 /* line 8, ../sass/components/footer.scss */
 footer p {
-  color: #000;
+  color: #191919;
 }
 
 /* line 1, ../sass/modules/news.scss */
 .news-item {
+  width: inherit;
   padding-bottom: 20px;
 }
 
-/* line 5, ../sass/modules/news.scss */
+/* line 6, ../sass/modules/news.scss */
 .news-item:last-child {
   border-bottom: 0;
 }
 
-/* line 9, ../sass/modules/news.scss */
+/* line 10, ../sass/modules/news.scss */
 .news-item a {
   animation: text-decoration ease 1s;
 }
 
-/* line 13, ../sass/modules/news.scss */
+/* line 14, ../sass/modules/news.scss */
 .news-item a:hover {
   text-decoration: underline;
   animation: text-decoration ease 1s;
 }
 
-/* line 18, ../sass/modules/news.scss */
+/* line 19, ../sass/modules/news.scss */
 .news-item p a {
   color: #FCD901;
 }
 
-/* line 22, ../sass/modules/news.scss */
+/* line 23, ../sass/modules/news.scss */
 .top-image {
   position: relative;
   height: 200px;
@@ -822,7 +857,7 @@ footer p {
   background-repeat: no-repeat;
 }
 
-/* line 34, ../sass/modules/news.scss */
+/* line 35, ../sass/modules/news.scss */
 .top-image h1, .top-image h2 {
   position: absolute;
   bottom: 0;
@@ -972,4 +1007,10 @@ footer p {
   background-color: rgba(252, 217, 1, 0);
   transition: 1s ease all;
   border: solid 1px #FCD901;
+}
+
+/* line 19, ../sass/modules/tags.scss */
+.tag {
+  font-style: italic;
+  color: #FCD901;
 }
