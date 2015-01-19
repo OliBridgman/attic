@@ -1,0 +1,25 @@
+.tab-header-content{
+  display: inline;
+}
+
+.tab-link {
+  display: inline-block;
+  padding: 20px;
+  border: 1px solid transparent;
+  &.is-active {
+    border: solid 1px $yellow;
+    border-bottom: solid 2px $black;
+    margin-bottom: -1px;
+  }
+}
+
+.tab-content {
+  display: none;
+  width: 100%;
+  float: left;
+  &.is-open {
+    @include flexbox();
+    border-top: solid 1px $yellow;
+  }
+}
+

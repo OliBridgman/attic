@@ -1,7 +1,7 @@
 $small-screen: 640px;
 body {
   color: white;
-  background-color: #191919;
+  background-color: $black;
 }
 .container {
   @include flexbox();

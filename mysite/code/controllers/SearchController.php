@@ -15,6 +15,10 @@ class SearchController extends Page_Controller {
     $this->setResults();
   }
 
+  public function Tag() {
+    return $this->tag;
+  }
+
   public function Results() {
     return $this->results;
   }
